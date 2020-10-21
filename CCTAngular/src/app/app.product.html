@@ -1,0 +1,44 @@
+<h1>Welcome to Product</h1><br>
+<table>
+    <tr>
+        <td>Prod Id</td>
+        <td>
+            <input type="text" [(ngModel)] = "prodId" />
+        </td>
+    </tr>
+    <tr>
+        <td>Prod Name</td>
+        <td>
+            <input type="text" [(ngModel)] = "prodName" />
+        </td>
+    </tr>
+    <tr>
+        <td>Prod Online</td>
+        <td>
+            <input type="text" [(ngModel)] = "prodOnline" />
+        </td>
+    </tr>
+    <tr>
+        <td>Prod Type</td>
+        <td>
+            <input type="text" [(ngModel)] = "prodType" />
+        </td>
+    </tr>
+    <tr><td><button typer = "button" value="add Data" (click) = "getAllData()">Add Data</button></td></tr>
+</table>
+<div *ngIf = "prodOnline else falseblock"> This is True..........</div>
+<ng-template #falseblock>This is not true</ng-template>
+
+<table border="1px">
+    <tr>
+        <th>Prod Id</th>
+        <th>Prod Name</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor = "let pro of products">
+        <td>{{pro.prodId}}</td>
+        <td>{{pro.prodName}}</td>
+        <td><input type="button" value = "Delete" (click)= "deleteData(pro)"/></td>
+    </tr>
+</table>
+<img [src]="pic" width = 100%/>

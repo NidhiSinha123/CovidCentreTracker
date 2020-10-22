@@ -1,18 +1,14 @@
 package com.example.CovidCentreTracker.dto;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Embeddable
 public class AddressDTO {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "address_id")
-	private Long addressId;
 	
 	@Column(name="line1")
 	private String line1;
@@ -34,22 +30,13 @@ public class AddressDTO {
 		
 	}
 
-	public AddressDTO(Long addressId, String line1, String line2, String city, String state, Long pincode) {
+	public AddressDTO(String line1, String line2, String city, String state, Long pincode) {
 		super();
-		this.addressId = addressId;
 		this.line1 = line1;
 		this.line2 = line2;
 		this.city = city;
 		this.state = state;
 		this.pincode = pincode;
-	}
-
-	public Long getAddressId() {
-		return addressId;
-	}
-
-	public void setAddressId(Long addressId) {
-		this.addressId = addressId;
 	}
 
 	public String getLine1() {
@@ -96,7 +83,6 @@ public class AddressDTO {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((addressId == null) ? 0 : addressId.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((line1 == null) ? 0 : line1.hashCode());
 		result = prime * result + ((line2 == null) ? 0 : line2.hashCode());
@@ -114,11 +100,6 @@ public class AddressDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		AddressDTO other = (AddressDTO) obj;
-		if (addressId == null) {
-			if (other.addressId != null)
-				return false;
-		} else if (!addressId.equals(other.addressId))
-			return false;
 		if (city == null) {
 			if (other.city != null)
 				return false;
@@ -146,6 +127,14 @@ public class AddressDTO {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "AddressDTO [line1=" + line1 + ", line2=" + line2 + ", city=" + city + ", state=" + state + ", pincode="
+				+ pincode + "]";
+	}
+
+	
 	
 	
 	

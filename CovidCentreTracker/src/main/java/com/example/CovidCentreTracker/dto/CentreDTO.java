@@ -41,6 +41,9 @@ public class CentreDTO {
     @Column(name="centre_image")
     private byte[] image;
 	
+	@Column(name="isApproved")
+	private boolean isApproved;
+	
 	
 	
 	public CentreDTO()
@@ -48,10 +51,12 @@ public class CentreDTO {
 		
 	}
 
+	
 
 
-	public CentreDTO(Long centreId, String name, BigInteger phone, AddressDTO address, String longitude, String latitude,
-			byte[] image) {
+
+	public CentreDTO(Long centreId, String name, BigInteger phone, AddressDTO address, String longitude,
+			String latitude, byte[] image, boolean isApproved) {
 		super();
 		this.centreId = centreId;
 		this.name = name;
@@ -60,7 +65,10 @@ public class CentreDTO {
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.image = image;
+		this.isApproved = isApproved;
 	}
+
+
 
 
 
@@ -146,6 +154,16 @@ public class CentreDTO {
 		this.image = image;
 	}
 
+	public boolean isApproved() {
+		return isApproved;
+	}
+
+	public void setApproved(boolean isApproved) {
+		this.isApproved = isApproved;
+	}
+
+
+
 
 
 	@Override
@@ -155,12 +173,15 @@ public class CentreDTO {
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((centreId == null) ? 0 : centreId.hashCode());
 		result = prime * result + Arrays.hashCode(image);
+		result = prime * result + (isApproved ? 1231 : 1237);
 		result = prime * result + ((latitude == null) ? 0 : latitude.hashCode());
 		result = prime * result + ((longitude == null) ? 0 : longitude.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		return result;
 	}
+
+
 
 
 
@@ -184,6 +205,8 @@ public class CentreDTO {
 		} else if (!centreId.equals(other.centreId))
 			return false;
 		if (!Arrays.equals(image, other.image))
+			return false;
+		if (isApproved != other.isApproved)
 			return false;
 		if (latitude == null) {
 			if (other.latitude != null)
@@ -210,11 +233,18 @@ public class CentreDTO {
 
 
 
+
+
 	@Override
 	public String toString() {
 		return "CentreDTO [centreId=" + centreId + ", name=" + name + ", phone=" + phone + ", address=" + address
-				+ ", longitude=" + longitude + ", latitude=" + latitude + ", image=" + Arrays.toString(image) + "]";
+				+ ", longitude=" + longitude + ", latitude=" + latitude + ", image=" + Arrays.toString(image)
+				+ ", isApproved=" + isApproved + "]";
 	}
+
 	
+
+
+
 	
 }

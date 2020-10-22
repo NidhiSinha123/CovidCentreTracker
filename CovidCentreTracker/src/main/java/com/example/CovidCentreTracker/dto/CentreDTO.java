@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,8 +28,8 @@ public class CentreDTO {
 	@Column(name="centre_phone_no")
 	private BigInteger phone;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id", referencedColumnName = "address_id")
+	@Embedded
+	@Column(name="centre_address")
 	private AddressDTO address;
 	
 	@Column(name="centre_longitude")

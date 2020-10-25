@@ -52,8 +52,6 @@ public class CentreDTO {
 		
 	}
 
-	
-
 
 
 	public CentreDTO(Long centreId, String name, BigInteger phone, AddressDTO address, String longitude,
@@ -68,8 +66,6 @@ public class CentreDTO {
 		this.image = image;
 		this.isApproved = isApproved;
 	}
-
-
 
 
 
@@ -155,15 +151,26 @@ public class CentreDTO {
 		this.image = image;
 	}
 
+
+
 	public boolean isApproved() {
 		return isApproved;
 	}
+
+
 
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;
 	}
 
 
+
+	@Override
+	public String toString() {
+		return "CentreDTO [centreId=" + centreId + ", name=" + name + ", phone=" + phone + ", address=" + address
+				+ ", longitude=" + longitude + ", latitude=" + latitude + ", image=" + Arrays.toString(image)
+				+ ", isApproved=" + isApproved + "]";
+	}
 
 
 
@@ -181,8 +188,6 @@ public class CentreDTO {
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		return result;
 	}
-
-
 
 
 
@@ -232,20 +237,7 @@ public class CentreDTO {
 		return true;
 	}
 
-
-
-
-
-	@Override
-	public String toString() {
-		return "CentreDTO [centreId=" + centreId + ", name=" + name + ", phone=" + phone + ", address=" + address
-				+ ", longitude=" + longitude + ", latitude=" + latitude + ", image=" + Arrays.toString(image)
-				+ ", isApproved=" + isApproved + "]";
-	}
-
 	
-
-
-
+	
 	
 }

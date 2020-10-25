@@ -21,31 +21,50 @@ public class CCTServiceImpl implements CCTService {
 
 	public boolean deleteCentre(long centreId) {
 		// TODO Auto-generated method stub
-		return false;
+		centreRepository.deleteById(centreId);
+		CentreModel centre = centreRepository.findById(centreId).get();
+		if(centre==null)
+			return true;
+		else
+			return false;
+		
 	}
 
 	@Override
 	public CentreModel editCentre(CentreModel centre) {
 		// TODO Auto-generated method stub
-		return null;
+		CentreModel newCentre = centreRepository.findById(centre.getCentreId()).get();
+		newCentre.setAddress(centre.getAddress());
+		newCentre.setApproved(centre.isApproved());
+		newCentre.setImage(centre.getImage());
+		newCentre.setLatitude(centre.getLatitude());
+		newCentre.setLongitude(centre.getLongitude());
+		newCentre.setName(centre.getName());
+		newCentre.setPhone(centre.getPhone());
+		return newCentre;
 	}
 
 	@Override
 	public List<CentreModel> listAllCentres() {
 		// TODO Auto-generated method stub
-		return null;
+		List<CentreModel> listOfCentres = centreRepository.findAll();
+		return listOfCentres;
 	}
 
 	@Override
 	public boolean approveCentre(CentreModel centre) {
 		// TODO Auto-generated method stub
-		return false;
+		CentreModel newCentre = centreRepository.findById(centre.getCentreId()).get();
+		if(newCentre==null)
+			return false;
+		newCentre.setApproved(true);
+		return true;
 	}
 
 	@Override
 	public CentreModel addCentre(CentreModel newCentre) {
 		// TODO Auto-generated method stub
-		return null;
+		return centreRepository.save(newCentre);
 	}
 
 

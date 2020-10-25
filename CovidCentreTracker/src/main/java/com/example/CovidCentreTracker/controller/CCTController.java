@@ -41,7 +41,7 @@ public class CCTController {
 	public ResponseEntity<?> deleteCentre(@RequestParam("centreId") Long centreId)
 	{
 		boolean isDeleted = service.deleteCentre(centreId);
-		if(isDeleted)
+		if(isDeleted==true)
 		{
 			return new ResponseEntity<String>("Centre deleted successfully",HttpStatus.OK);
 		}

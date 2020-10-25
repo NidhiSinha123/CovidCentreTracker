@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -41,7 +42,7 @@ public class CCTServiceImpl implements CCTService {
 		newCentre.setLongitude(centre.getLongitude());
 		newCentre.setName(centre.getName());
 		newCentre.setPhone(centre.getPhone());
-		return newCentre;
+		return centreRepository.save(newCentre);
 	}
 
 	@Override

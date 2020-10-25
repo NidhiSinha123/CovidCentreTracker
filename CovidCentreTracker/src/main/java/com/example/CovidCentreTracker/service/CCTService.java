@@ -7,7 +7,7 @@ import com.example.CovidCentreTracker.model.CentreModel;
 
 public interface CCTService {
 	
-	CentreModel addCentre(CentreDTO centre);
+	CentreModel addCentre(CentreModel newCentre);
 	boolean deleteCentre(long centreId);
 	CentreModel editCentre(CentreModel centre);
 	List<CentreModel> listAllCentres();

@@ -43,10 +43,11 @@ public class CCTServiceImpl implements CCTService {
 	}
 
 	@Override
-	public CentreModel addCentre(CentreDTO centre) {
+	public CentreModel addCentre(CentreModel newCentre) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 	 
 }

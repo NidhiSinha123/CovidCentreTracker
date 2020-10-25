@@ -27,7 +27,7 @@ public class CCTController {
 	{
 		ModelMapper mapper = new ModelMapper();
 		CentreModel newCentre = mapper.map(centre, CentreModel.class);
-		CentreModel addedCentre = service.addCentre(centre);
+		CentreModel addedCentre = service.addCentre(newCentre);
 		if(addedCentre!=null)
 		return new ResponseEntity<CentreModel>(addedCentre,HttpStatus.OK);
 		else

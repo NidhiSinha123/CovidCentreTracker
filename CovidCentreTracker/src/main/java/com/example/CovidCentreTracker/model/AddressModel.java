@@ -1,25 +1,36 @@
-package com.example.CovidCentreTracker.dto;
+package com.example.CovidCentreTracker.model;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class AddressDTO {
+@Embeddable
+public class AddressModel {
 	
+	@Column(name="line1")
 	private String line1;
-
+	
+	@Column(name="line2")
 	private String line2;
-
+	
+	@Column(name="city")
 	private String city;
-
+	
+	@Column(name="State")
 	private String state;
 	
+	@Column(name="Pincode")
 	private Long pincode;
 	
-	public AddressDTO()
+	public AddressModel()
 	{
 		
 	}
 
-	public AddressDTO(String line1, String line2, String city, String state, Long pincode) {
+	public AddressModel(String line1, String line2, String city, String state, Long pincode) {
 		super();
 		this.line1 = line1;
 		this.line2 = line2;
@@ -88,7 +99,7 @@ public class AddressDTO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AddressDTO other = (AddressDTO) obj;
+		AddressModel other = (AddressModel) obj;
 		if (city == null) {
 			if (other.city != null)
 				return false;
@@ -124,4 +135,8 @@ public class AddressDTO {
 	}
 
 	
+	
+	
+	
+
 }

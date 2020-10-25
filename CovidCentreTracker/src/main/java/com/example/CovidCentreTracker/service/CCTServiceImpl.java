@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.CovidCentreTracker.dto.CentreDTO;
+import com.example.CovidCentreTracker.model.CentreModel;
 import com.example.CovidCentreTracker.repository.CentreRepository;
 
 @Service
@@ -17,7 +17,7 @@ public class CCTServiceImpl implements CCTService {
 	  CentreRepository centreRepository;
 
 	@Override
-	public CentreDTO addCentre(CentreDTO centre) {
+	public CentreModel addCentre(CentreModel centre) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -29,19 +29,19 @@ public class CCTServiceImpl implements CCTService {
 	}
 
 	@Override
-	public CentreDTO editCentre(CentreDTO centre) {
+	public CentreModel editCentre(CentreModel centre) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<CentreDTO> listAllCentres() {
+	public List<CentreModel> listAllCentres() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean approveCentre(CentreDTO centre) {
+	public boolean approveCentre(CentreModel centre) {
 		// TODO Auto-generated method stub
 		return false;
 	}

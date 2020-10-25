@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.CovidCentreTracker.dto.CentreDTO;
+import com.example.CovidCentreTracker.model.CentreModel;
 import com.example.CovidCentreTracker.service.CCTService;
 
 @RestController
@@ -21,11 +21,11 @@ public class CCTController {
 	CCTService service;
 	
 	@PostMapping("addCentre")
-	public ResponseEntity<?> addCentre(@RequestBody CentreDTO centre)
+	public ResponseEntity<?> addCentre(@RequestBody CentreModel centre)
 	{
-		CentreDTO addedCentre = service.addCentre(centre);
+		CentreModel addedCentre = service.addCentre(centre);
 		if(addedCentre!=null)
-		return new ResponseEntity<CentreDTO>(addedCentre,HttpStatus.OK);
+		return new ResponseEntity<CentreModel>(addedCentre,HttpStatus.OK);
 		else
 		return new ResponseEntity<String>("Request for adding centre failed",HttpStatus.INTERNAL_SERVER_ERROR);	
 	
@@ -46,17 +46,18 @@ public class CCTController {
 	}
 	
 	@PutMapping("updateCentre")
-	public ResponseEntity<?> updateCentre(@RequestBody CentreDTO centre)
+	public ResponseEntity<?> updateCentre(@RequestBody CentreModel centre)
 	{
-		CentreDTO updatedCentre = service.editCentre(centre);
+		CentreModel updatedCentre = service.editCentre(centre);
 		if(updatedCentre != null)
 		{
-			return new ResponseEntity<CentreDTO>(updatedCentre,HttpStatus.OK);
+			return new ResponseEntity<CentreModel>(updatedCentre,HttpStatus.OK);
 		}
 		else
 		{
 			return new ResponseEntity<String>("Request for update centre failed",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
 
 }

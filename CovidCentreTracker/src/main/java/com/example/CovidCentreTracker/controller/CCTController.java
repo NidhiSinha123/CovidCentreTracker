@@ -1,6 +1,7 @@
 package com.example.CovidCentreTracker.controller;
 
 import org.hibernate.annotations.UpdateTimestamp;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.CovidCentreTracker.dto.CentreDTO;
 import com.example.CovidCentreTracker.model.CentreModel;
 import com.example.CovidCentreTracker.service.CCTService;
 
@@ -21,8 +23,10 @@ public class CCTController {
 	CCTService service;
 	
 	@PostMapping("addCentre")
-	public ResponseEntity<?> addCentre(@RequestBody CentreModel centre)
+	public ResponseEntity<?> addCentre(@RequestBody CentreDTO centre)
 	{
+		ModelMapper mapper = new ModelMapper();
+		CentreModel newCentre = mapper.map(centre, CentreModel.class);
 		CentreModel addedCentre = service.addCentre(centre);
 		if(addedCentre!=null)
 		return new ResponseEntity<CentreModel>(addedCentre,HttpStatus.OK);

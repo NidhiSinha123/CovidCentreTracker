@@ -17,20 +17,25 @@ import com.example.CovidCentreTracker.utility.CSVHelper;
 @Service
 public class CCTServiceImpl implements CCTService {
 
-	 @Autowired
-	  CentreRepository centreRepository;
+	@Autowired
+	CentreRepository centreRepository;
 
 	@Override
 
 	public boolean deleteCentre(long centreId) {
 		// TODO Auto-generated method stub
-		centreRepository.deleteById(centreId);
-		CentreModel centre = centreRepository.findById(centreId).get();
-		if(centre==null)
-			return true;
-		else
+
+		try {
+			centreRepository.deleteById(centreId);
+			// CentreModel centre = centreRepository.findById(centreId).get();
+			if (centreRepository.existsById(centreId)) {
+				return false;
+			} else
+				return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return false;
-		
+		}
 	}
 
 	@Override
@@ -58,7 +63,7 @@ public class CCTServiceImpl implements CCTService {
 	public boolean approveCentre(CentreModel centre) {
 		// TODO Auto-generated method stub
 		CentreModel newCentre = centreRepository.findById(centre.getCentreId()).get();
-		if(newCentre==null)
+		if (newCentre == null)
 			return false;
 		newCentre.setApproved(true);
 		return true;
@@ -69,7 +74,7 @@ public class CCTServiceImpl implements CCTService {
 		// TODO Auto-generated method stub
 		return centreRepository.save(newCentre);
 	}
-
+  
 	public void save(MultipartFile file) {
 	    try {
 	      List<CentreModel> centres = CSVHelper.csvToCentres(file.getInputStream());
@@ -85,7 +90,4 @@ public class CCTServiceImpl implements CCTService {
 	    ByteArrayInputStream in = CSVHelper.CentresToCSV(centres);
 	    return in;
 	  }
-
-
-	 
 }

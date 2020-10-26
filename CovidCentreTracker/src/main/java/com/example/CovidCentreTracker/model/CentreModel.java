@@ -1,38 +1,60 @@
-package com.example.CovidCentreTracker.dto;
+package com.example.CovidCentreTracker.model;
 
 import java.math.BigInteger;
 import java.util.Arrays;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 
-import com.example.CovidCentreTracker.model.AddressModel;
+@Entity(name = "centre_table")
+public class CentreModel {
 
-public class CentreDTO {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "centre_id")
 	private Long centreId;
-
+	
+	@Column(name="centre_name")
 	private String name;
 	
+	@Column(name="centre_phone_no")
 	private BigInteger phone;
 	
+	@Embedded
+	@Column(name="centre_address")
 	private AddressModel address;
 	
+	@Column(name="centre_longitude")
 	private String longitude;
 	
+	@Column(name="centre_latitude")
 	private String latitude;
 	
+	@Lob
+    @Column(name="centre_image")
     private byte[] image;
-
+	
+	@Column(name="isApproved")
 	private boolean isApproved;
 	
-	public CentreDTO()
+	
+	
+	public CentreModel()
 	{
 		
 	}
 
-	public CentreDTO(Long centreId, String name, BigInteger phone, AddressModel address, String longitude,
+
+
+	public CentreModel(Long centreId, String name, BigInteger phone, AddressModel address, String longitude,
 			String latitude, byte[] image, boolean isApproved) {
 		super();
 		this.centreId = centreId;
@@ -45,69 +67,112 @@ public class CentreDTO {
 		this.isApproved = isApproved;
 	}
 
+
+
 	public Long getCentreId() {
 		return centreId;
 	}
+
+
 
 	public void setCentreId(Long centreId) {
 		this.centreId = centreId;
 	}
 
+
+
 	public String getName() {
 		return name;
 	}
+
+
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+
+
 	public BigInteger getPhone() {
 		return phone;
 	}
+
+
 
 	public void setPhone(BigInteger phone) {
 		this.phone = phone;
 	}
 
+
+
 	public AddressModel getAddress() {
 		return address;
 	}
+
+
 
 	public void setAddress(AddressModel address) {
 		this.address = address;
 	}
 
+
+
 	public String getLongitude() {
 		return longitude;
 	}
+
+
 
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
 
+
+
 	public String getLatitude() {
 		return latitude;
 	}
+
+
 
 	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
 
+
+
 	public byte[] getImage() {
 		return image;
 	}
+
+
 
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
 
+
+
 	public boolean isApproved() {
 		return isApproved;
 	}
 
+
+
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "CentreDTO [centreId=" + centreId + ", name=" + name + ", phone=" + phone + ", address=" + address
+				+ ", longitude=" + longitude + ", latitude=" + latitude + ", image=" + Arrays.toString(image)
+				+ ", isApproved=" + isApproved + "]";
+	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -124,6 +189,8 @@ public class CentreDTO {
 		return result;
 	}
 
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -132,7 +199,7 @@ public class CentreDTO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CentreDTO other = (CentreDTO) obj;
+		CentreModel other = (CentreModel) obj;
 		if (address == null) {
 			if (other.address != null)
 				return false;
@@ -170,14 +237,7 @@ public class CentreDTO {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "CentreDTO [centreId=" + centreId + ", name=" + name + ", phone=" + phone + ", address=" + address
-				+ ", longitude=" + longitude + ", latitude=" + latitude + ", image=" + Arrays.toString(image)
-				+ ", isApproved=" + isApproved + "]";
-	}
 	
 	
 	
-
 }

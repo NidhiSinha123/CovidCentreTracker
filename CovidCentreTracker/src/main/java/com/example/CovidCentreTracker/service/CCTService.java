@@ -3,13 +3,14 @@ package com.example.CovidCentreTracker.service;
 import java.util.List;
 
 import com.example.CovidCentreTracker.dto.CentreDTO;
+import com.example.CovidCentreTracker.model.CentreModel;
 
 public interface CCTService {
 	
-	CentreDTO addCentre(CentreDTO centre);
+	CentreModel addCentre(CentreModel newCentre);
 	boolean deleteCentre(long centreId);
-	CentreDTO editCentre(CentreDTO centre);
-	List<CentreDTO> listAllCentres();
-	boolean approveCentre(CentreDTO centre);
+	CentreModel editCentre(CentreModel centre);
+	List<CentreModel> listAllCentres();
+	boolean approveCentre(CentreModel centre);
 
 }

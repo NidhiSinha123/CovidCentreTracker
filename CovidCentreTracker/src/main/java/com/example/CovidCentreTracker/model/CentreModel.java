@@ -54,10 +54,10 @@ public class CentreModel {
 
 
 
-	public CentreModel(Long centreId, String name, BigInteger phone, AddressModel address, String longitude,
+	public CentreModel( String name, BigInteger phone, AddressModel address, String longitude,
 			String latitude, byte[] image, boolean isApproved) {
 		super();
-		this.centreId = centreId;
+		
 		this.name = name;
 		this.phone = phone;
 		this.address = address;

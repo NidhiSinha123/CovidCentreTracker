@@ -43,7 +43,7 @@ public class CCTServiceImpl implements CCTService {
 		// TODO Auto-generated method stub
 		CentreModel newCentre = centreRepository.findById(centre.getCentreId()).get();
 		newCentre.setAddress(centre.getAddress());
-		newCentre.setApproved(centre.isApproved());
+		newCentre.setIsApproved(centre.getIsApproved());
 		newCentre.setImage(centre.getImage());
 		newCentre.setLatitude(centre.getLatitude());
 		newCentre.setLongitude(centre.getLongitude());
@@ -65,7 +65,7 @@ public class CCTServiceImpl implements CCTService {
 		CentreModel newCentre = centreRepository.findById(centre.getCentreId()).get();
 		if (newCentre == null)
 			return false;
-		newCentre.setApproved(true);
+		newCentre.setIsApproved(true);
 		return true;
 	}
 

@@ -83,7 +83,7 @@ public class CSVHelper {
 	              centre.getAddress().getCity(),
 	              centre.getAddress().getState(),
 	              String.valueOf(centre.getAddress().getPincode()),
-	              String.valueOf(centre.isApproved())
+	              String.valueOf(centre.getIsApproved())
 	            );
 
 	        csvPrinter.printRecord(data);
